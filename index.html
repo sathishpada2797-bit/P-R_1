@@ -1,484 +1,431 @@
-//
-// ==========================================
-// DISABLE SCROLL BEFORE OPENING
-// ==========================================
-//
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-document.body.style.overflow = "hidden";
+  <title>Rajarajeshwari & Padalingam Wedding Invitation</title>
 
-//
-// ==========================================
-// ELEMENTS
-// ==========================================
-//
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-const openingScreen =
-  document.getElementById("openingScreen");
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-const openInvitationBtn =
-  document.getElementById("openInvitation");
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-const music =
-  document.getElementById("bgMusic");
+<body>
 
-const musicToggle =
-  document.getElementById("musicToggle");
+  <!-- ========================= -->
+  <!-- FLOATING PETALS -->
+  <!-- ========================= -->
 
-//
-// ==========================================
-// MUSIC STATE
-// ==========================================
-//
+  <div class="petals">
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+  </div>
 
-let isPlaying = false;
+  <!-- ========================= -->
+  <!-- MUSIC BUTTON -->
+  <!-- ========================= -->
 
-//
-// ==========================================
-// OPEN INVITATION
-// ==========================================
-//
+  <audio id="bgMusic" loop>
+    <source src="music/Neeyum Nanum bgm.mp3" type="audio/mp3">
+  </audio>
 
-openInvitationBtn.addEventListener(
-  "click",
-  async () => {
+  <button class="music-btn" id="musicToggle">
+    ♫ Play Music
+  </button>
 
-    // Enable Scroll
+  <!-- ========================= -->
+  <!-- OPENING SCREEN -->
+  <!-- ========================= -->
 
-    document.body.style.overflow = "auto";
+  <section class="opening-screen" id="openingScreen">
 
-    // Hide Opening Screen
+    <div class="opening-overlay"></div>
 
-    openingScreen.classList.add(
-      "hide-opening"
-    );
+    <div class="opening-content">
 
-    // Auto Play Music
+      <div class="ganesha-icon">
+        🕉
+      </div>
 
-    try {
+      <p class="invited-text">
+        YOU ARE INVITED
+      </p>
+
+      <h1 class="couple-names">
+        Padalingam
+        <span>&</span>
+        Rajarajeshwari
+      </h1>
+
+      <p class="opening-description">
+        Together with their families,<br>
+        invite you to celebrate their wedding.
+      </p>
+
+      <button class="open-btn" id="openInvitation">
+        Open Invitation
+      </button>
+
+      <p class="date-preview">
+        07 June 2026
+      </p>
 
-      await music.play();
+    </div>
+  </section>
 
-      isPlaying = true;
+  <!-- ========================= -->
+  <!-- HERO SECTION -->
+  <!-- ========================= -->
 
-      musicToggle.innerHTML =
-        "♫ Music";
+  <section class="hero-section">
 
-      musicToggle.classList.add(
-        "active"
-      );
+    <div class="hero-overlay"></div>
 
-    } catch (error) {
+    <img
+      src="images/couple.jpg"
+      alt="Padalingam and Rajarajeshwari"
+      class="hero-image"
+    >
 
-      console.log(
-        "Autoplay blocked:",
-        error
-      );
+    <div class="hero-content">
 
-    }
+      <p class="hero-top-text">
+        WITH THE BLESSINGS OF OUR FAMILY
+      </p>
 
-  }
-);
+      <h1 class="hero-title">
+        Padalingam
+        <span>&</span>
+        Rajarajeshwari
+      </h1>
 
-//
-// ==========================================
-// MUSIC TOGGLE
-// ==========================================
-//
+      <p class="hero-subtitle">
+        invite you to witness their forever
+      </p>
 
-musicToggle.addEventListener(
-  "click",
-  async () => {
+      <div class="hero-divider"></div>
 
-    try {
+      <p class="hero-bottom-text">
+        A journey written in destiny,<br>
+        sealed with love and tradition.
+      </p>
 
-      if (!isPlaying) {
+    </div>
 
-        await music.play();
+  </section>
 
-        isPlaying = true;
+  <!-- ========================= -->
+  <!-- STORY SECTION -->
+  <!-- ========================= -->
 
-        musicToggle.classList.add(
-          "active"
-        );
+  <section class="story-section">
 
-      } else {
+    <div class="section-heading">
+      <p>OUR STORY</p>
+      <h2>A Forever Beginning</h2>
+    </div>
 
-        music.pause();
+    <div class="story-grid">
 
-        isPlaying = false;
+      <div class="story-card">
+        <span>01</span>
+        <h3>It began with a smile</h3>
+        <p>
+          A simple hello slowly turned into endless conversations.
+        </p>
+      </div>
 
-        musicToggle.classList.remove(
-          "active"
-        );
+      <div class="story-card">
+        <span>02</span>
+        <h3>Moments became memories</h3>
+        <p>
+          Between laughter and silence, they found comfort in each other.
+        </p>
+      </div>
 
-      }
+      <div class="story-card">
+        <span>03</span>
+        <h3>Two souls, one destiny</h3>
+        <p>
+          What started as fate soon became forever.
+        </p>
+      </div>
 
-    } catch (error) {
+      <div class="story-card">
+        <span>04</span>
+        <h3>The next chapter begins</h3>
+        <p>
+          With love in their hearts and blessings all around.
+        </p>
+      </div>
 
-      console.log(
-        "Music error:",
-        error
-      );
+    </div>
 
-    }
+  </section>
 
-  }
-);
+  <!-- ========================= -->
+  <!-- SAVE THE DATE -->
+  <!-- ========================= -->
 
-//
-// ==========================================
-// COUNTDOWN TIMER
-// ==========================================
-//
+  <section class="save-date-section">
 
-// Wedding Date
+    <div class="save-date-card">
 
-const weddingDate =
-  new Date(
-    "June 07, 2026 07:35:00"
-  ).getTime();
+      <p class="save-tag">
+        SAVE THE DATE
+      </p>
 
-const daysEl =
-  document.getElementById("days");
+      <h2>
+        07 June 2026
+      </h2>
 
-const hoursEl =
-  document.getElementById("hours");
+      <p class="venue">
+        SOP Marriage Hall, Sivakasi
+      </p>
 
-const minutesEl =
-  document.getElementById("minutes");
+      <!-- COUNTDOWN -->
 
-const secondsEl =
-  document.getElementById("seconds");
+      <div class="countdown">
 
-function formatTime(time) {
+        <div class="count-box">
+          <h3 id="days">00</h3>
+          <span>Days</span>
+        </div>
 
-  return time < 10
-    ? `0${time}`
-    : time;
+        <div class="count-box">
+          <h3 id="hours">00</h3>
+          <span>Hours</span>
+        </div>
 
-}
+        <div class="count-box">
+          <h3 id="minutes">00</h3>
+          <span>Minutes</span>
+        </div>
 
-function updateCountdown() {
+        <div class="count-box">
+          <h3 id="seconds">00</h3>
+          <span>Seconds</span>
+        </div>
 
-  // Prevent errors if countdown
-  // section doesn't exist
+      </div>
 
-  if (
-    !daysEl ||
-    !hoursEl ||
-    !minutesEl ||
-    !secondsEl
-  ) {
-    return;
-  }
+    </div>
 
-  const now = new Date().getTime();
+  </section>
 
-  const distance =
-    weddingDate - now;
+  <!-- ========================= -->
+  <!-- EVENTS SECTION -->
+  <!-- ========================= -->
 
-  // Time Calculations
+  <section class="events-section">
 
-  const days = Math.floor(
-    distance /
-    (1000 * 60 * 60 * 24)
-  );
+    <div class="section-heading">
+      <p>WEDDING CELEBRATIONS</p>
+      <h2>Wedding Events</h2>
+    </div>
 
-  const hours = Math.floor(
-    (
-      distance %
-      (1000 * 60 * 60 * 24)
-    ) /
-    (1000 * 60 * 60)
-  );
+    <div class="events-grid">
 
-  const minutes = Math.floor(
-    (
-      distance %
-      (1000 * 60 * 60)
-    ) /
-    (1000 * 60)
-  );
+      <!-- RECEPTION -->
 
-  const seconds = Math.floor(
-    (
-      distance %
-      (1000 * 60)
-    ) / 1000
-  );
+      <div class="event-card">
 
-  // Update UI
+        <div class="event-top">
+          <h3>Reception</h3>
+          <span>06 June 2026</span>
+        </div>
 
-  daysEl.innerHTML =
-    formatTime(days);
+        <p class="event-description">
+          An evening filled with music, laughter and celebration.
+        </p>
 
-  hoursEl.innerHTML =
-    formatTime(hours);
+        <div class="event-details">
+          <p>⏰ 6:30 PM Onwards</p>
+          <p>📍 SOP Marriage Hall, Sivakasi</p>
+        </div>
 
-  minutesEl.innerHTML =
-    formatTime(minutes);
+      </div>
 
-  secondsEl.innerHTML =
-    formatTime(seconds);
+      <!-- MUHURTHAM -->
 
-  // Wedding Date Passed
+      <div class="event-card">
 
-  if (distance < 0) {
+        <div class="event-top">
+          <h3>Muhurtham</h3>
+          <span>07 June 2026</span>
+        </div>
 
-    clearInterval(
-      countdownInterval
-    );
+        <p class="event-description">
+          The sacred union of two hearts and two families.
+        </p>
 
-    daysEl.innerHTML = "00";
-    hoursEl.innerHTML = "00";
-    minutesEl.innerHTML = "00";
-    secondsEl.innerHTML = "00";
+        <div class="event-details">
+          <p>⏰ 7:35 AM Onwards</p>
+          <p>📍 SOP Marriage Hall, Sivakasi</p>
+        </div>
 
-  }
+      </div>
 
-}
+    </div>
 
-// Start Countdown
+  </section>
 
-updateCountdown();
+  <!-- ========================= -->
+  <!-- GALLERY SECTION -->
+  <!-- ========================= -->
 
-const countdownInterval =
-  setInterval(
-    updateCountdown,
-    1000
-  );
+  <section class="gallery-section">
 
-//
-// ==========================================
-// SCROLL REVEAL ANIMATION
-// ==========================================
-//
+    <div class="section-heading light">
+      <p>FRAGMENTS OF FOREVER</p>
+      <h2>Moments We’ll Remember</h2>
+    </div>
 
-const revealElements =
-  document.querySelectorAll(
-    ".story-card, .event-card, .gallery-item, .save-date-card, .wish-card, .rsvp-card"
-  );
+    <div class="gallery-grid">
 
-function revealOnScroll() {
+      <div class="gallery-item tall">
+        <img src="images/gallery1.jpg" alt="Gallery Image">
+      </div>
 
-  const windowHeight =
-    window.innerHeight;
+      <div class="gallery-item">
+        <img src="images/gallery2.jpg" alt="Gallery Image">
+      </div>
 
-  revealElements.forEach(
-    (element) => {
+      <div class="gallery-item wide">
+        <img src="images/gallery3.jpg" alt="Gallery Image">
+      </div>
 
-      const elementTop =
-        element
-          .getBoundingClientRect()
-          .top;
+      <div class="gallery-item wide">
+        <img src="images/gallery4.jpg" alt="Gallery Image">
+      </div>
 
-      if (
-        elementTop <
-        windowHeight - 100
-      ) {
+      <div class="gallery-item tall">
+        <img src="images/gallery5.jpg" alt="Gallery Image">
+      </div>
 
-        element.classList.add(
-          "show"
-        );
+    </div>
 
-      }
+  </section>
 
-    }
-  );
+  <!-- ========================= -->
+  <!-- RSVP SECTION -->
+  <!-- ========================= -->
 
-}
+  <section class="rsvp-section">
 
-window.addEventListener(
-  "scroll",
-  revealOnScroll
-);
+    <div class="rsvp-card">
 
-revealOnScroll();
+      <p class="rsvp-tag">
+        YOUR PRESENCE IS OUR GIFT
+      </p>
 
-//
-// ==========================================
-// WISH FORM
-// ==========================================
-//
+      <h2>
+        Join us in our celebration
+      </h2>
 
-const wishForm =
-  document.querySelector(
-    ".wish-form"
-  );
+      <div class="rsvp-buttons">
 
-if (wishForm) {
+        <a
+          href="https://maps.google.com"
+          target="_blank"
+          class="rsvp-btn"
+        >
+          Open Map
+        </a>
 
-  wishForm.addEventListener(
-    "submit",
-    (e) => {
+        <a
+          href="#"
+          class="rsvp-btn"
+        >
+          Add to Calendar
+        </a>
 
-      e.preventDefault();
+      </div>
 
-      const input =
-        wishForm.querySelector(
-          "input"
-        );
+    </div>
 
-      const textarea =
-        wishForm.querySelector(
-          "textarea"
-        );
+  </section>
 
-      const name =
-        input.value.trim();
+  <!-- ========================= -->
+  <!-- WISH SECTION -->
+  <!-- ========================= -->
 
-      const message =
-        textarea.value.trim();
+  <section class="wish-section">
 
-      if (
-        name === "" ||
-        message === ""
-      ) {
+    <div class="wish-card">
 
-        alert(
-          "Please fill all fields 💛"
-        );
+      <p class="wish-tag">
+        LEAVE YOUR BLESSINGS
+      </p>
 
-        return;
+      <h2>
+        Leave a Wish
+      </h2>
 
-      }
+      <form class="wish-form">
 
-      // Success Message
+        <input
+          type="text"
+          placeholder="Your Name"
+        >
 
-      alert(
-        "Thank you for your lovely wishes 💖"
-      );
+        <textarea
+          placeholder="Write your wishes here..."
+        ></textarea>
 
-      // Clear Form
+        <button type="submit">
+          Send Wish
+        </button>
 
-      input.value = "";
-      textarea.value = "";
+      </form>
 
-    }
-  );
+    </div>
 
-}
+  </section>
 
-//
-// ==========================================
-// PARALLAX EFFECT
-// ==========================================
-//
+  <!-- ========================= -->
+  <!-- FOOTER -->
+  <!-- ========================= -->
 
-window.addEventListener(
-  "scroll",
-  () => {
+  <footer class="footer-section">
 
-    const scrolled =
-      window.scrollY;
+    <p class="footer-top">
+      SEE YOU THERE
+    </p>
 
-    const heroImage =
-      document.querySelector(
-        ".hero-image"
-      );
+    <h2>
+      Thank You
+    </h2>
 
-    if (heroImage) {
+    <p class="footer-text">
+      Every love story is beautiful.<br>
+      Ours becomes complete with your presence.
+    </p>
 
-      heroImage.style.transform =
-        `scale(1.08) translateY(${scrolled * 0.08}px)`;
+    <div class="footer-divider"></div>
 
-    }
+    <p class="footer-copy">
+      © 2026 Rajarajeshwari & Padalingam
+    </p>
 
-  }
-);
+    <a href="#" class="footer-credit">
+      Designed with love by Paddy
+    </a>
 
-//
-// ==========================================
-// SMOOTH SCROLL
-// ==========================================
-//
+  </footer>
 
-document
-  .querySelectorAll(
-    'a[href^="#"]'
-  )
-  .forEach((anchor) => {
+  <!-- MAIN JS -->
+  <script src="script.js"></script>
 
-    anchor.addEventListener(
-      "click",
-      function (e) {
-
-        const target =
-          document.querySelector(
-            this.getAttribute(
-              "href"
-            )
-          );
-
-        if (target) {
-
-          e.preventDefault();
-
-          target.scrollIntoView({
-            behavior: "smooth"
-          });
-
-        }
-
-      }
-    );
-
-  });
-
-//
-// ==========================================
-// MOBILE TOUCH EFFECT
-// ==========================================
-//
-
-const buttons =
-  document.querySelectorAll(
-    ".open-btn, .rsvp-btn, .wish-form button, .music-btn"
-  );
-
-buttons.forEach((button) => {
-
-  button.addEventListener(
-    "touchstart",
-    () => {
-
-      button.classList.add(
-        "touch-active"
-      );
-
-    }
-  );
-
-  button.addEventListener(
-    "touchend",
-    () => {
-
-      setTimeout(() => {
-
-        button.classList.remove(
-          "touch-active"
-        );
-
-      }, 150);
-
-    }
-  );
-
-});
-
-//
-// ==========================================
-// PAGE LOADED
-// ==========================================
-//
-
-window.addEventListener(
-  "load",
-  () => {
-
-    document.body.classList.add(
-      "loaded"
-    );
-
-  }
-);
+</body>
+</html>
