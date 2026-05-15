@@ -1,184 +1,329 @@
-"use strict";
-( () => {
-    function e(e) {
-        let t = location.href;
-        if (e) {
-            let n = new URL(t);
-            if (n.pathname !== e)
-                return n.pathname = e,
-                n.search = "",
-                n.href
-        }
-        return t
+//
+// ==========================================
+// OPEN INVITATION ANIMATION
+// ==========================================
+//
+
+const openingScreen = document.getElementById("openingScreen");
+const openInvitationBtn = document.getElementById("openInvitation");
+
+openInvitationBtn.addEventListener("click", () => {
+
+  // Fade out opening screen
+  openingScreen.classList.add("hide-opening");
+
+  // Enable scroll after opening
+  document.body.style.overflow = "auto";
+
+});
+
+//
+// ==========================================
+// DISABLE SCROLL BEFORE OPENING
+// ==========================================
+//
+
+document.body.style.overflow = "hidden";
+
+//
+// ==========================================
+// BACKGROUND MUSIC CONTROL
+// ==========================================
+//
+
+const music = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+let isPlaying = false;
+
+musicToggle.addEventListener("click", async () => {
+
+  try {
+
+    if (!isPlaying) {
+
+      await music.play();
+
+      musicToggle.innerHTML = "♫ Pause Music";
+      musicToggle.classList.add("active");
+
+      isPlaying = true;
+
+    } else {
+
+      music.pause();
+
+      musicToggle.innerHTML = "♫ Play Music";
+      musicToggle.classList.remove("active");
+
+      isPlaying = false;
+
     }
-    function t() {
-        return !!(navigator.webdriver || navigator.userAgent.includes("Headless"))
-    }
-    var n, a, r, i, o = (r = () => {}
-    ,
-    () => (r && (i = r(r = 0)),
-    i));
-    (n = () => {
-        o(),
-        function() {
-            var n;
-            let a = e => e
-              , r = document
-              , i = r.currentScript;
-            if (t())
-                return;
-            let o = null != (n = null == i ? void 0 : i.dataset) ? n : {}
-              , l = d(o, "view")
-              , s = d(o, "event")
-              , u = d(o, "session")
-              , c = null
-              , p = null
-              , f = !0;
-            function d(e, t) {
-                return e[`${t}Endpoint`] || ("endpoint"in e ? `${e.endpoint}/${t}` : `${null != i && i.src.includes("/va/") ? "/va" : "/_vercel/insights"}/${t}`)
-            }
-            async function h(e) {
-                if (e && !Array.isArray(e))
-                    return {
-                        p: e
-                    };
-                let t = r.querySelectorAll("[data-flag-values]");
-                if (!i || !t.length)
-                    return;
-                let n = new URL(i.src)
-                  , a = n.pathname.split("/")
-                  , o = a.pop();
-                return o && a.push("flags", o),
-                n.pathname = a.join("/"),
-                import(n.href).then(n => n.gather(t, e))
-            }
-            async function v({type: t, data: n, options: i}) {
-                var u;
-                let f = e(p)
-                  , d = r.referrer
-                  , v = a({
-                    type: t,
-                    url: f,
-                    payload: n
-                });
-                if (!1 === v || null === v)
-                    return;
-                v && (f = v.url,
-                n = null != (u = v.payload) ? u : n);
-                let w = d.includes(location.host)
-                  , y = {
-                    o: f,
-                    sv: "0.1.3",
-                    sdkn: o.sdkn,
-                    sdkv: o.sdkv,
-                    ts: Date.now(),
-                    ...c && {
-                        dp: c
-                    },
-                    ...null != i && i.withReferrer && !w ? {
-                        r: d
-                    } : {},
-                    ..."event" === t && n && {
-                        en: n.name,
-                        ed: n.data
-                    },
-                    f: await h(null == i ? void 0 : i.flags).catch( () => {}
-                    )
-                };
-                try {
-                    await fetch("pageview" === t ? l : s, {
-                        method: "POST",
-                        keepalive: !0,
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(y)
-                    })
-                } catch (g) {}
-            }
-            async function w(e={}) {
-                return v({
-                    type: "pageview",
-                    options: {
-                        withReferrer: e.withReferrer
-                    }
-                })
-            }
-            async function y(e, t, n) {
-                return v({
-                    type: "event",
-                    data: {
-                        name: e,
-                        data: t
-                    },
-                    options: {
-                        withReferrer: !0,
-                        flags: null == n ? void 0 : n.flags
-                    }
-                })
-            }
-            async function g() {
-                await fetch(u, {
-                    method: "GET",
-                    keepalive: !0
-                }).catch( () => {}
-                )
-            }
-            function m(e) {
-                return e.pathname === new URL(k).pathname
-            }
-            function R(e) {
-                let t = e ? "string" == typeof e ? new URL(e,location.origin) : new URL(e.href) : null;
-                !t || m(t) || t.hash && m(t) || w()
-            }
-            let k = e()
-              , S = () => {
-                var e;
-                window.va = function(e, t) {
-                    "beforeSend" === e ? a = t : "event" === e ? t && y(t.name, t.data, t.options) : "pageview" === e && t && (t.route && (c = t.route),
-                    t.path && (p = t.path),
-                    w({
-                        withReferrer: f
-                    }),
-                    f = !1),
-                    "enableCookie" === e && g()
-                }
-                ,
-                null == (e = window.vaq) || e.forEach( ([e,t]) => {
-                    window.va(e, t)
-                }
-                )
-            }
-            ;
-            ( () => {
-                if (window.vai || (window.vai = !0,
-                S(),
-                o.disableAutoTrack))
-                    return;
-                w({
-                    withReferrer: !0
-                });
-                let t = history.pushState.bind(history);
-                history.pushState = function(...n) {
-                    t(...n);
-                    try {
-                        R(n[2]),
-                        k = e()
-                    } catch (a) {}
-                }
-                ,
-                window.addEventListener("popstate", function() {
-                    R(e()),
-                    k = e()
-                })
-            }
-            )()
-        }()
-    }
-    ,
-    () => (a || n((a = {
-        exports: {}
-    }).exports, a),
-    a.exports))()
+
+  } catch (error) {
+
+    console.log("Music autoplay blocked:", error);
+
+  }
+
+});
+
+//
+// ==========================================
+// AUTO PLAY MUSIC AFTER OPEN INVITATION
+// ==========================================
+//
+
+openInvitationBtn.addEventListener("click", async () => {
+
+  try {
+
+    await music.play();
+
+    musicToggle.innerHTML = "♫ Pause Music";
+    musicToggle.classList.add("active");
+
+    isPlaying = true;
+
+  } catch (error) {
+
+    console.log("Autoplay blocked:", error);
+
+  }
+
+});
+
+//
+// ==========================================
+// COUNTDOWN TIMER
+// ==========================================
+//
+
+// Wedding Date
+const weddingDate = new Date("June 07, 2026 07:35:00").getTime();
+
+const daysEl = document.getElementById("days");
+const hoursEl = document.getElementById("hours");
+const minutesEl = document.getElementById("minutes");
+const secondsEl = document.getElementById("seconds");
+
+function updateCountdown() {
+
+  const now = new Date().getTime();
+
+  const distance = weddingDate - now;
+
+  // Time calculations
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  const hours = Math.floor(
+    (distance % (1000 * 60 * 60 * 24)) /
+    (1000 * 60 * 60)
+  );
+
+  const minutes = Math.floor(
+    (distance % (1000 * 60 * 60)) /
+    (1000 * 60)
+  );
+
+  const seconds = Math.floor(
+    (distance % (1000 * 60)) /
+    1000
+  );
+
+  // Update HTML
+  daysEl.innerHTML = formatTime(days);
+  hoursEl.innerHTML = formatTime(hours);
+  minutesEl.innerHTML = formatTime(minutes);
+  secondsEl.innerHTML = formatTime(seconds);
+
+  // Wedding day reached
+  if (distance < 0) {
+
+    clearInterval(countdownInterval);
+
+    daysEl.innerHTML = "00";
+    hoursEl.innerHTML = "00";
+    minutesEl.innerHTML = "00";
+    secondsEl.innerHTML = "00";
+
+  }
+
 }
-)();
+
+//
+// ==========================================
+// FORMAT TIME
+// ==========================================
+//
+
+function formatTime(time) {
+
+  return time < 10 ? `0${time}` : time;
+
+}
+
+//
+// ==========================================
+// START COUNTDOWN
+// ==========================================
+//
+
+updateCountdown();
+
+const countdownInterval = setInterval(updateCountdown, 1000);
+
+//
+// ==========================================
+// SCROLL REVEAL ANIMATION
+// ==========================================
+//
+
+const revealElements = document.querySelectorAll(
+  ".story-card, .event-card, .gallery-item, .save-date-card, .wish-card, .rsvp-card"
+);
+
+function revealOnScroll() {
+
+  const windowHeight = window.innerHeight;
+
+  revealElements.forEach((element) => {
+
+    const elementTop = element.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+
+      element.classList.add("show");
+
+    }
+
+  });
+
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+revealOnScroll();
+
+//
+// ==========================================
+// WISH FORM
+// ==========================================
+//
+
+const wishForm = document.querySelector(".wish-form");
+
+wishForm.addEventListener("submit", (e) => {
+
+  e.preventDefault();
+
+  const input = wishForm.querySelector("input");
+  const textarea = wishForm.querySelector("textarea");
+
+  const name = input.value.trim();
+  const message = textarea.value.trim();
+
+  if (name === "" || message === "") {
+
+    alert("Please fill all fields 💛");
+    return;
+
+  }
+
+  // Success Message
+  alert("Thank you for your lovely wishes 💖");
+
+  // Clear Form
+  input.value = "";
+  textarea.value = "";
+
+});
+
+//
+// ==========================================
+// PARALLAX EFFECT
+// ==========================================
+//
+
+window.addEventListener("scroll", () => {
+
+  const scrolled = window.scrollY;
+
+  const heroImage = document.querySelector(".hero-image");
+
+  if (heroImage) {
+
+    heroImage.style.transform =
+      `scale(1.08) translateY(${scrolled * 0.08}px)`;
+
+  }
+
+});
+
+//
+// ==========================================
+// SMOOTH SCROLL
+// ==========================================
+//
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+
+  anchor.addEventListener("click", function (e) {
+
+    const target = document.querySelector(this.getAttribute("href"));
+
+    if (target) {
+
+      e.preventDefault();
+
+      target.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+
+  });
+
+});
+
+//
+// ==========================================
+// LOADING ANIMATION
+// ==========================================
+//
+
+window.addEventListener("load", () => {
+
+  document.body.classList.add("loaded");
+
+});
+
+//
+// ==========================================
+// MOBILE TOUCH ANIMATION
+// ==========================================
+//
+
+const buttons = document.querySelectorAll(
+  ".open-btn, .rsvp-btn, .wish-form button, .music-btn"
+);
+
+buttons.forEach((button) => {
+
+  button.addEventListener("touchstart", () => {
+
+    button.classList.add("touch-active");
+
+  });
+
+  button.addEventListener("touchend", () => {
+
+    setTimeout(() => {
+
+      button.classList.remove("touch-active");
+
+    }, 150);
+
+  });
+
+});
