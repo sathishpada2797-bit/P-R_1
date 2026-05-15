@@ -169,7 +169,7 @@ button{
 
 
 /* =========================================
-   OPENING SCREEN — REDESIGNED
+   OPENING SCREEN — FIXED VERSION
 ========================================= */
 
 .opening-screen {
@@ -184,8 +184,8 @@ button{
   overflow: hidden;
   background:
     linear-gradient(
-      rgba(32, 20, 16, 0.6),
-      rgba(32, 20, 16, 0.8)
+      rgba(32, 20, 16, 0.4),
+      rgba(32, 20, 16, 0.6)
     ),
     url("images/couple.jpg");
   background-size: cover;
@@ -193,7 +193,7 @@ button{
 }
 
 /* =========================================
-   CURTAIN SPLIT ANIMATION
+   CURTAIN SPLIT — REDUCED OPACITY
 ========================================= */
 
 .curtain-left,
@@ -204,8 +204,8 @@ button{
   height: 100%;
   background:
     linear-gradient(
-      rgba(20, 14, 10, 0.92),
-      rgba(30, 20, 16, 0.92)
+      rgba(20, 14, 10, 0.0),
+      rgba(30, 20, 16, 0.0)
     );
   z-index: 10;
   transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
@@ -230,11 +230,15 @@ button{
 }
 
 /* =========================================
-   HIDE OPENING (CURTAIN + FADE)
+   HIDE OPENING
 ========================================= */
 
 .hide-opening {
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s 1s ease;
+  visibility: hidden;
+  transition: opacity 0.8s 1s ease, visibility 0s 1.8s;
 }
 
 .hide-opening .opening-content {
@@ -247,18 +251,6 @@ button{
 .hide-opening .ornamental-frame {
   opacity: 0;
   transition: 0.5s ease;
-}
-
-/* Full removal after animation */
-.hide-opening {
-  animation: removeScreen 0.1s 1.6s forwards;
-}
-
-@keyframes removeScreen {
-  to {
-    visibility: hidden;
-    z-index: -1;
-  }
 }
 
 /* =========================================
@@ -334,7 +326,7 @@ button{
   position: absolute;
   width: 60px;
   height: 60px;
-  border-color: rgba(198, 164, 106, 0.5);
+  border-color: rgba(198, 164, 106, 0.6);
   border-style: solid;
   border-width: 0;
   animation: cornerFadeIn 1.5s 0.8s ease forwards;
@@ -388,7 +380,7 @@ button{
   position: relative;
   z-index: 8;
   text-align: center;
-  color: var(--white);
+  color: #ffffff;
   padding: 20px;
   max-width: 900px;
   transition: 0.6s ease;
@@ -447,7 +439,7 @@ button{
 ========================================= */
 
 .ornament-line {
-  color: var(--gold);
+  color: #c6a46a;
   font-size: 14px;
   letter-spacing: 4px;
   opacity: 0;
@@ -482,7 +474,7 @@ button{
   letter-spacing: 8px;
   font-size: 13px;
   margin-bottom: 30px;
-  opacity: 0.9;
+  color: #ffffff;
 }
 
 .invited-text span {
@@ -520,7 +512,7 @@ button{
 }
 
 /* =========================================
-   COUPLE NAMES — STAGGERED REVEAL
+   COUPLE NAMES — STAGGERED REVEAL (FIX OVERLAP)
 ========================================= */
 
 .couple-names {
@@ -528,6 +520,10 @@ button{
   font-size: 78px;
   line-height: 1.15;
   font-weight: 600;
+  color: #ffffff;
+  /* IMPORTANT: Reset any inherited styles */
+  text-shadow: none;
+  position: relative;
 }
 
 .name-reveal {
@@ -542,7 +538,7 @@ button{
 
 .amp-symbol {
   display: block;
-  color: var(--gold);
+  color: #c6a46a;
   margin: 10px 0;
   font-size: 55px;
   opacity: 0;
@@ -584,33 +580,43 @@ button{
   margin-top: 35px;
   font-size: 18px;
   line-height: 1.8;
+  color: rgba(255, 255, 255, 0.92);
   opacity: 0;
   animation: fadeUp 1s 2.4s ease forwards;
 }
 
 /* =========================================
-   OPEN BUTTON — SHIMMER EFFECT
+   OPEN BUTTON — FIXED VISIBILITY + SHIMMER
 ========================================= */
 
 .open-btn {
   position: relative;
   margin-top: 45px;
-  background: linear-gradient(135deg, #c6a46a, #d9bb89);
-  color: #2f211d;
+  background: linear-gradient(135deg, #c6a46a, #e8c97a);
+  color: #1a0f0a;
   padding: 16px 38px;
   border-radius: 60px;
   font-size: 15px;
   font-weight: 600;
-  transition: 0.4s ease;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(198, 164, 106, 0.3);
   overflow: hidden;
+  border: 1px solid rgba(255, 215, 100, 0.4);
+  cursor: pointer;
+
+  /* FIX: Use visibility animation to ensure button is clickable */
   opacity: 0;
   animation: btnEntrance 0.8s 2.8s ease forwards;
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .open-btn:hover {
   transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 20px 50px rgba(198, 164, 106, 0.3);
+  box-shadow:
+    0 20px 50px rgba(198, 164, 106, 0.4),
+    0 0 30px rgba(198, 164, 106, 0.3);
 }
 
 .btn-text {
@@ -664,6 +670,7 @@ button{
   margin-top: 30px;
   letter-spacing: 5px;
   font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
   opacity: 0;
   animation: fadeUp 1s 3.2s ease forwards;
 }
