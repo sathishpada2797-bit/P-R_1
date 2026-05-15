@@ -1,334 +1,184 @@
-// =====================================================
-// COUNTDOWN TIMER
-// =====================================================
-
-function updateCountdown() {
-
-  const target = new Date('2026-06-07T07:30:00');
-  const now = new Date();
-
-  const diff = target - now;
-
-  if (diff <= 0) {
-
-    ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
-      document.getElementById(id).textContent = '00';
-    });
-
-    return;
-  }
-
-  const d = Math.floor(diff / 86400000);
-
-  const h = Math.floor(
-    (diff % 86400000) / 3600000
-  );
-
-  const m = Math.floor(
-    (diff % 3600000) / 60000
-  );
-
-  const s = Math.floor(
-    (diff % 60000) / 1000
-  );
-
-  document.getElementById('cd-days').textContent =
-    String(d).padStart(2, '0');
-
-  document.getElementById('cd-hours').textContent =
-    String(h).padStart(2, '0');
-
-  document.getElementById('cd-mins').textContent =
-    String(m).padStart(2, '0');
-
-  document.getElementById('cd-secs').textContent =
-    String(s).padStart(2, '0');
-}
-
-updateCountdown();
-
-setInterval(updateCountdown, 1000);
-
-// =====================================================
-// WISHES
-// =====================================================
-
-const wishes = [];
-
-function sendWish() {
-
-  const nameEl = document.getElementById('wish-name');
-  const textEl = document.getElementById('wish-text');
-
-  const name = nameEl.value.trim();
-  const text = textEl.value.trim();
-
-  if (!name || !text) {
-
-    if (!name) {
-      nameEl.style.borderColor =
-        'rgba(201,100,89,0.6)';
+"use strict";
+( () => {
+    function e(e) {
+        let t = location.href;
+        if (e) {
+            let n = new URL(t);
+            if (n.pathname !== e)
+                return n.pathname = e,
+                n.search = "",
+                n.href
+        }
+        return t
     }
-
-    if (!text) {
-      textEl.style.borderColor =
-        'rgba(201,100,89,0.6)';
+    function t() {
+        return !!(navigator.webdriver || navigator.userAgent.includes("Headless"))
     }
-
-    setTimeout(() => {
-
-      nameEl.style.borderColor = '';
-      textEl.style.borderColor = '';
-
-    }, 1500);
-
-    return;
-  }
-
-  wishes.unshift({
-    name,
-    text
-  });
-
-  nameEl.value = '';
-  textEl.value = '';
-
-  renderWishes();
-
-  showWishSuccess();
-}
-
-function renderWishes() {
-
-  const list = document.getElementById('wishes-list');
-
-  if (wishes.length === 0) {
-
-    list.innerHTML =
-      '<p class="wish-empty">Leave your blessings</p>';
-
-    return;
-  }
-
-  list.innerHTML = wishes.map(w => `
-
-    <div class="wish-item cinematic-wish">
-
-      <div class="wish-from">
-        ${escapeHtml(w.name)}
-      </div>
-
-      <div class="wish-text">
-        “${escapeHtml(w.text)}”
-      </div>
-
-    </div>
-
-  `).join('');
-}
-
-function escapeHtml(str) {
-
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-// =====================================================
-// WISH SUCCESS EFFECT
-// =====================================================
-
-function showWishSuccess() {
-
-  const button = document.querySelector('.wish-form .btn');
-
-  if (!button) return;
-
-  const original = button.innerHTML;
-
-  button.innerHTML = 'Blessings Sent';
-
-  button.style.transform = 'scale(1.04)';
-  button.style.borderColor = '#c49a62';
-
-  setTimeout(() => {
-
-    button.innerHTML = original;
-
-    button.style.transform = '';
-    button.style.borderColor = '';
-
-  }, 1800);
-}
-
-// =====================================================
-// ENTER KEY SUPPORT
-// =====================================================
-
-document.getElementById('wish-name')
-.addEventListener('keydown', function(e) {
-
-  if (e.key === 'Enter') {
-
-    e.preventDefault();
-
-    document
-      .getElementById('wish-text')
-      .focus();
-  }
-});
-
-document.getElementById('wish-text')
-.addEventListener('keydown', function(e) {
-
-  if (e.key === 'Enter' && !e.shiftKey) {
-
-    e.preventDefault();
-
-    sendWish();
-  }
-});
-
-// =====================================================
-// CINEMATIC SCROLL REVEAL
-// =====================================================
-
-const observer = new IntersectionObserver((entries) => {
-
-  entries.forEach(entry => {
-
-    if (entry.isIntersecting) {
-
-      entry.target.classList.add('section-visible');
-
-      observer.unobserve(entry.target);
+    var n, a, r, i, o = (r = () => {}
+    ,
+    () => (r && (i = r(r = 0)),
+    i));
+    (n = () => {
+        o(),
+        function() {
+            var n;
+            let a = e => e
+              , r = document
+              , i = r.currentScript;
+            if (t())
+                return;
+            let o = null != (n = null == i ? void 0 : i.dataset) ? n : {}
+              , l = d(o, "view")
+              , s = d(o, "event")
+              , u = d(o, "session")
+              , c = null
+              , p = null
+              , f = !0;
+            function d(e, t) {
+                return e[`${t}Endpoint`] || ("endpoint"in e ? `${e.endpoint}/${t}` : `${null != i && i.src.includes("/va/") ? "/va" : "/_vercel/insights"}/${t}`)
+            }
+            async function h(e) {
+                if (e && !Array.isArray(e))
+                    return {
+                        p: e
+                    };
+                let t = r.querySelectorAll("[data-flag-values]");
+                if (!i || !t.length)
+                    return;
+                let n = new URL(i.src)
+                  , a = n.pathname.split("/")
+                  , o = a.pop();
+                return o && a.push("flags", o),
+                n.pathname = a.join("/"),
+                import(n.href).then(n => n.gather(t, e))
+            }
+            async function v({type: t, data: n, options: i}) {
+                var u;
+                let f = e(p)
+                  , d = r.referrer
+                  , v = a({
+                    type: t,
+                    url: f,
+                    payload: n
+                });
+                if (!1 === v || null === v)
+                    return;
+                v && (f = v.url,
+                n = null != (u = v.payload) ? u : n);
+                let w = d.includes(location.host)
+                  , y = {
+                    o: f,
+                    sv: "0.1.3",
+                    sdkn: o.sdkn,
+                    sdkv: o.sdkv,
+                    ts: Date.now(),
+                    ...c && {
+                        dp: c
+                    },
+                    ...null != i && i.withReferrer && !w ? {
+                        r: d
+                    } : {},
+                    ..."event" === t && n && {
+                        en: n.name,
+                        ed: n.data
+                    },
+                    f: await h(null == i ? void 0 : i.flags).catch( () => {}
+                    )
+                };
+                try {
+                    await fetch("pageview" === t ? l : s, {
+                        method: "POST",
+                        keepalive: !0,
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(y)
+                    })
+                } catch (g) {}
+            }
+            async function w(e={}) {
+                return v({
+                    type: "pageview",
+                    options: {
+                        withReferrer: e.withReferrer
+                    }
+                })
+            }
+            async function y(e, t, n) {
+                return v({
+                    type: "event",
+                    data: {
+                        name: e,
+                        data: t
+                    },
+                    options: {
+                        withReferrer: !0,
+                        flags: null == n ? void 0 : n.flags
+                    }
+                })
+            }
+            async function g() {
+                await fetch(u, {
+                    method: "GET",
+                    keepalive: !0
+                }).catch( () => {}
+                )
+            }
+            function m(e) {
+                return e.pathname === new URL(k).pathname
+            }
+            function R(e) {
+                let t = e ? "string" == typeof e ? new URL(e,location.origin) : new URL(e.href) : null;
+                !t || m(t) || t.hash && m(t) || w()
+            }
+            let k = e()
+              , S = () => {
+                var e;
+                window.va = function(e, t) {
+                    "beforeSend" === e ? a = t : "event" === e ? t && y(t.name, t.data, t.options) : "pageview" === e && t && (t.route && (c = t.route),
+                    t.path && (p = t.path),
+                    w({
+                        withReferrer: f
+                    }),
+                    f = !1),
+                    "enableCookie" === e && g()
+                }
+                ,
+                null == (e = window.vaq) || e.forEach( ([e,t]) => {
+                    window.va(e, t)
+                }
+                )
+            }
+            ;
+            ( () => {
+                if (window.vai || (window.vai = !0,
+                S(),
+                o.disableAutoTrack))
+                    return;
+                w({
+                    withReferrer: !0
+                });
+                let t = history.pushState.bind(history);
+                history.pushState = function(...n) {
+                    t(...n);
+                    try {
+                        R(n[2]),
+                        k = e()
+                    } catch (a) {}
+                }
+                ,
+                window.addEventListener("popstate", function() {
+                    R(e()),
+                    k = e()
+                })
+            }
+            )()
+        }()
     }
-
-  });
-
-}, {
-  threshold: 0.12
-});
-
-document.querySelectorAll('.section').forEach((el, index) => {
-
-  el.classList.add('section-hidden');
-
-  el.style.transitionDelay = `${index * 0.08}s`;
-
-  observer.observe(el);
-});
-
-// =====================================================
-// HERO PARALLAX GLOW
-// =====================================================
-
-window.addEventListener('scroll', () => {
-
-  const scrollY = window.scrollY;
-
-  const heroGlow = document.querySelector('.hero::after');
-
-  const hero = document.querySelector('.hero');
-
-  if (!hero) return;
-
-  hero.style.backgroundPositionY =
-    `${scrollY * 0.25}px`;
-});
-
-// =====================================================
-// SOFT CARD PARALLAX
-// =====================================================
-
-const luxuryCards = document.querySelectorAll(
-  '.story-card, .event-card, .family-side, .gallery-item'
-);
-
-luxuryCards.forEach(card => {
-
-  card.addEventListener('mousemove', (e) => {
-
-    const rect = card.getBoundingClientRect();
-
-    const x =
-      e.clientX - rect.left;
-
-    const y =
-      e.clientY - rect.top;
-
-    const rotateY =
-      ((x / rect.width) - 0.5) * 4;
-
-    const rotateX =
-      ((y / rect.height) - 0.5) * -4;
-
-    card.style.transform = `
-      perspective(900px)
-      rotateX(${rotateX}deg)
-      rotateY(${rotateY}deg)
-      translateY(-4px)
-    `;
-  });
-
-  card.addEventListener('mouseleave', () => {
-
-    card.style.transform = '';
-  });
-});
-
-// =====================================================
-// CINEMATIC IMAGE LOADING
-// =====================================================
-
-document.querySelectorAll('img').forEach(img => {
-
-  img.addEventListener('load', () => {
-
-    img.style.opacity = '0';
-
-    requestAnimationFrame(() => {
-
-      img.style.transition =
-        'opacity 1.4s ease';
-
-      img.style.opacity = '1';
-    });
-  });
-});
-
-// =====================================================
-// FLOATING PETALS RANDOMIZER
-// =====================================================
-
-document.querySelectorAll('.petals span')
-.forEach((petal, index) => {
-
-  const size =
-    Math.random() * 8 + 6;
-
-  petal.style.width = `${size}px`;
-  petal.style.height = `${size}px`;
-
-  petal.style.animationDelay =
-    `${index * 2}s`;
-
-  petal.style.opacity =
-    (Math.random() * 0.25 + 0.08).toFixed(2);
-});
-
-// =====================================================
-// CINEMATIC HERO RE-ENTRY ON REFRESH
-// =====================================================
-
-window.addEventListener('load', () => {
-
-  document.body.classList.add('loaded');
-
-  window.scrollTo({
-    top: 0,
-    behavior: 'instant'
-  });
-});
+    ,
+    () => (a || n((a = {
+        exports: {}
+    }).exports, a),
+    a.exports))()
+}
+)();
