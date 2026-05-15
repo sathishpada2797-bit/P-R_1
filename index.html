@@ -1,4 +1,5 @@
-
+```python
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,87 +131,22 @@ transition:transform 0.4s ease,box-shadow 0.4s ease;
    HERO SECTION
 ========================================= */
 .hero-section{
-position:relative;
-height:100vh;
-overflow:hidden;
-visibility:hidden;
+position:relative;height:100vh;overflow:hidden;visibility:hidden;
 }
-.hero-section.visible{
-visibility:visible;
-}
-.hero-image{
-width:100%;
-height:100%;
-object-fit:cover;
-transform:scale(1.08);
-transition:transform 0.1s linear;
-}
-.hero-overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(rgba(28,18,14,0.55),rgba(28,18,14,0.72));
-z-index:1;
-}
+.hero-section.visible{visibility:visible;}
+.hero-image{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 0.1s linear;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(rgba(28,18,14,0.55),rgba(28,18,14,0.72));z-index:1;}
 .hero-content{
-position:absolute;
-inset:0;
-z-index:2;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:var(--white);
-padding:20px;
+position:absolute;inset:0;z-index:2;
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+text-align:center;color:var(--white);padding:20px;
 }
-.hero-top-text{
-letter-spacing:6px;
-font-size:12px;
-margin-bottom:24px;
-opacity:0;
-transform:translateY(20px);
-transition:opacity 0.8s ease,transform 0.8s ease;
-}
-.hero-title{
-font-family:'Cinzel',serif;
-font-size:92px;
-line-height:1.08;
-font-weight:600;
-opacity:0;
-transform:translateY(30px);
-transition:opacity 1s 0.3s ease,transform 1s 0.3s ease;
-}
-.hero-title span{
-display:block;
-color:var(--gold);
-font-size:60px;
-margin:10px 0;
-}
-.hero-subtitle{
-margin-top:28px;
-font-size:24px;
-font-family:'Great Vibes',cursive;
-color:#f5ddae;
-opacity:0;
-transform:translateY(20px);
-transition:opacity 0.8s 0.6s ease,transform 0.8s 0.6s ease;
-}
-.hero-divider{
-width:140px;
-height:1px;
-background:rgba(255,255,255,0.5);
-margin:34px 0;
-opacity:0;
-transform:scaleX(0);
-transition:opacity 0.6s 0.9s ease,transform 0.8s 0.9s ease;
-}
-.hero-bottom-text{
-font-size:18px;
-line-height:1.9;
-opacity:0;
-transform:translateY(20px);
-transition:opacity 0.8s 1.1s ease,transform 0.8s 1.1s ease;
-}
+.hero-top-text{letter-spacing:6px;font-size:12px;margin-bottom:24px;opacity:0;transform:translateY(20px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.hero-title{font-family:'Cinzel',serif;font-size:92px;line-height:1.08;font-weight:600;opacity:0;transform:translateY(30px);transition:opacity 1s 0.3s ease,transform 1s 0.3s ease;}
+.hero-title span{display:block;color:var(--gold);font-size:60px;margin:10px 0;}
+.hero-subtitle{margin-top:28px;font-size:24px;font-family:'Great Vibes',cursive;color:#f5ddae;opacity:0;transform:translateY(20px);transition:opacity 0.8s 0.6s ease,transform 0.8s 0.6s ease;}
+.hero-divider{width:140px;height:1px;background:rgba(255,255,255,0.5);margin:34px 0;opacity:0;transform:scaleX(0);transition:opacity 0.6s 0.9s ease,transform 0.8s 0.9s ease;}
+.hero-bottom-text{font-size:18px;line-height:1.9;opacity:0;transform:translateY(20px);transition:opacity 0.8s 1.1s ease,transform 0.8s 1.1s ease;}
 .hero-section.visible .hero-top-text,
 .hero-section.visible .hero-subtitle,
 .hero-section.visible .hero-bottom-text{opacity:0.9;transform:translateY(0);}
@@ -221,89 +157,80 @@ transition:opacity 0.8s 1.1s ease,transform 0.8s 1.1s ease;
    FAMILY SECTION
 ========================================= */
 .family-section{
-padding:100px 7%;
-background:var(--ivory);
-visibility:hidden;
-opacity:0;
+padding:100px 7%;background:var(--ivory);visibility:hidden;opacity:0;
 }
-.family-section.visible{
-visibility:visible;
-opacity:1;
-transition:opacity 0.8s ease;
-}
-.family-quote{
-text-align:center;
-margin-bottom:70px;
-}
-.quote-ornament{
-color:var(--gold);
-font-size:18px;
-letter-spacing:8px;
-margin:15px 0;
-}
+.family-section.visible{visibility:visible;opacity:1;transition:opacity 0.8s ease;}
+.family-quote{text-align:center;margin-bottom:70px;}
+.quote-ornament{color:var(--gold);font-size:18px;letter-spacing:8px;margin:15px 0;}
 .quote-text{
-font-family:'Great Vibes',cursive;
-font-size:36px;
-color:var(--brown);
-line-height:1.6;
-max-width:700px;
-margin:0 auto;
-opacity:0;
-transform:translateY(30px);
-transition:opacity 0.8s ease,transform 0.8s ease;
+font-family:'Great Vibes',cursive;font-size:36px;color:var(--brown);
+line-height:1.6;max-width:700px;margin:0 auto;
+opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;
 }
 .quote-text.show{opacity:1;transform:translateY(0);}
-.family-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:40px;
-max-width:1000px;
-margin:0 auto;
-}
+.family-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;max-width:1000px;margin:0 auto;}
 .family-card{
-background:rgba(255,255,255,0.6);
-backdrop-filter:blur(10px);
-padding:50px 40px;
-border-radius:30px;
-border:1px solid rgba(198,164,106,0.2);
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
-text-align:center;
-opacity:0;
-transform:translateY(40px);
-transition:opacity 0.8s ease,transform 0.8s ease;
+background:rgba(255,255,255,0.6);backdrop-filter:blur(10px);
+padding:50px 40px;border-radius:30px;border:1px solid rgba(198,164,106,0.2);
+box-shadow:0 10px 30px rgba(0,0,0,0.05);text-align:center;
+opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;
 }
 .family-card.show{opacity:1;transform:translateY(0);}
 .family-icon{font-size:48px;margin-bottom:20px;}
-.family-card h3{
-font-family:'Cinzel',serif;
-font-size:28px;
-font-weight:600;
-color:var(--brown);
-margin-bottom:10px;
+.family-card h3{font-family:'Cinzel',serif;font-size:28px;font-weight:600;color:var(--brown);margin-bottom:10px;}
+.family-divider{width:60px;height:2px;background:var(--gold);margin:20px auto;}
+.family-member{margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;}
+.member-role{font-size:14px;color:var(--rose);font-weight:500;min-width:30px;}
+.member-name{font-size:18px;font-weight:500;color:var(--brown);}
+
+/* =========================================
+   SAVE THE DATE SECTION
+========================================= */
+.save-date-section{
+padding:120px 7%;
+background:linear-gradient(180deg,#f7efe3,#f1dfc3);
+visibility:hidden;
+opacity:0;
 }
-.family-divider{
-width:60px;
-height:2px;
-background:var(--gold);
-margin:20px auto;
+.save-date-section.visible{visibility:visible;opacity:1;transition:opacity 0.8s ease;}
+.save-date-card{
+max-width:1100px;margin:auto;
+background:rgba(255,255,255,0.5);backdrop-filter:blur(14px);
+border-radius:40px;padding:70px 50px;text-align:center;
+border:1px solid rgba(198,164,106,0.2);
+opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;
 }
-.family-member{
-margin-top:18px;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
+.save-date-card.show{opacity:1;transform:translateY(0);}
+.save-tag{letter-spacing:6px;font-size:12px;color:var(--rose);}
+.save-date-card h2{
+margin-top:24px;font-family:'Cinzel',serif;font-size:72px;color:var(--brown);
 }
-.member-role{
-font-size:14px;
-color:var(--rose);
-font-weight:500;
-min-width:30px;
+.save-date-card .venue{margin-top:20px;color:#705e54;font-size:18px;line-height:1.8;}
+.countdown{
+display:grid;grid-template-columns:repeat(4,1fr);
+gap:20px;margin-top:50px;
 }
-.member-name{
-font-size:18px;
-font-weight:500;
-color:var(--brown);
+.count-box{
+background:rgba(255,255,255,0.7);
+padding:35px 20px;border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+position:relative;
+overflow:hidden;
+}
+.count-box::before{
+content:'';
+position:absolute;
+top:0;left:0;right:0;
+height:3px;
+background:linear-gradient(90deg,var(--gold),#e8c97a);
+}
+.count-box h3{
+font-size:58px;font-family:'Cinzel',serif;color:var(--brown);
+}
+.count-box span{
+display:block;margin-top:10px;
+letter-spacing:2px;font-size:12px;
+text-transform:uppercase;color:#705e54;
 }
 
 /* =========================================
@@ -318,6 +245,8 @@ color:var(--brown);
 .hero-title span{font-size:42px;}
 .family-grid{grid-template-columns:1fr;}
 .quote-text{font-size:30px;}
+.save-date-card h2{font-size:58px;}
+.countdown{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:768px){
 .couple-names{font-size:44px;}
@@ -335,6 +264,11 @@ color:var(--brown);
 .family-card{padding:40px 30px;}
 .family-card h3{font-size:24px;}
 .member-name{font-size:16px;}
+.save-date-section{padding:80px 5%;}
+.save-date-card{padding:50px 30px;}
+.save-date-card h2{font-size:42px;}
+.count-box{padding:25px 10px;}
+.count-box h3{font-size:40px;}
 }
 @media(max-width:480px){
 .couple-names{font-size:36px;}
@@ -351,6 +285,9 @@ color:var(--brown);
 .family-card{padding:35px 20px;}
 .family-card h3{font-size:20px;}
 .member-name{font-size:15px;}
+.save-date-card h2{font-size:34px;}
+.count-box h3{font-size:32px;}
+.countdown{grid-template-columns:1fr 1fr;gap:15px;}
 }
 </style>
 </head>
@@ -448,18 +385,47 @@ Rajarajeshwari
 </div>
 </section>
 
+<!-- SAVE THE DATE SECTION -->
+<section class="save-date-section" id="saveDateSection">
+<div class="save-date-card">
+<p class="save-tag">SAVE THE DATE</p>
+<h2>07 June 2026</h2>
+<p class="venue">📍 Venue details will go here<br>City, State</p>
+<div class="countdown">
+<div class="count-box">
+<h3 id="days">00</h3>
+<span>Days</span>
+</div>
+<div class="count-box">
+<h3 id="hours">00</h3>
+<span>Hours</span>
+</div>
+<div class="count-box">
+<h3 id="minutes">00</h3>
+<span>Minutes</span>
+</div>
+<div class="count-box">
+<h3 id="seconds">00</h3>
+<span>Seconds</span>
+</div>
+</div>
+</div>
+</section>
+
 <script>
 document.addEventListener("DOMContentLoaded",function(){
 var openingScreen=document.getElementById("openingScreen");
 var openBtn=document.getElementById("openInvitation");
 var heroSection=document.getElementById("heroSection");
 var familySection=document.getElementById("familySection");
+var saveDateSection=document.getElementById("saveDateSection");
 openBtn.onclick=function(){
 openingScreen.classList.add("hide-opening");
 setTimeout(function(){
 document.body.style.overflow="auto";
 heroSection.classList.add("visible");
 familySection.classList.add("visible");
+saveDateSection.classList.add("visible");
 },1200);
 };
 // Parallax
@@ -471,7 +437,7 @@ heroImage.style.transform="scale(1.08) translateY("+(scrolled*0.08)+"px)";
 }
 });
 // Scroll reveal
-var revealElements=document.querySelectorAll(".family-card,.quote-text");
+var revealElements=document.querySelectorAll(".family-card,.quote-text,.save-date-card");
 function revealOnScroll(){
 var windowHeight=window.innerHeight;
 revealElements.forEach(function(el){
@@ -483,6 +449,30 @@ el.classList.add("show");
 }
 window.addEventListener("scroll",revealOnScroll);
 revealOnScroll();
+// Countdown
+var weddingDate=new Date("June 07, 2026 07:35:00").getTime();
+var daysEl=document.getElementById("days");
+var hoursEl=document.getElementById("hours");
+var minutesEl=document.getElementById("minutes");
+var secondsEl=document.getElementById("seconds");
+function pad(n){return n<10?"0"+n:n;}
+function updateCountdown(){
+var now=new Date().getTime();
+var dist=weddingDate-now;
+if(dist<0){
+daysEl.innerHTML="00";
+hoursEl.innerHTML="00";
+minutesEl.innerHTML="00";
+secondsEl.innerHTML="00";
+return;
+}
+daysEl.innerHTML=pad(Math.floor(dist/(1000*60*60*24)));
+hoursEl.innerHTML=pad(Math.floor((dist%(1000*60*60*24))/(1000*60*60)));
+minutesEl.innerHTML=pad(Math.floor((dist%(1000*60*60))/(1000*60)));
+secondsEl.innerHTML=pad(Math.floor((dist%(1000*60))/1000));
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
 });
 </script>
 </body>
