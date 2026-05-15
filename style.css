@@ -182,7 +182,10 @@ button{
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background:
+
+  /* SOLID BACKGROUND — prevents hero bleed-through */
+  background-color: #1c120e;
+  background-image:
     linear-gradient(
       rgba(32, 20, 16, 0.4),
       rgba(32, 20, 16, 0.6)
@@ -202,13 +205,10 @@ button{
   top: 0;
   width: 50%;
   height: 100%;
-  background:
-    linear-gradient(
-      rgba(20, 14, 10, 0.0),
-      rgba(30, 20, 16, 0.0)
-    );
-  z-index: 10;
+  background: transparent;
+  z-index: 3;  /* LOWERED: was 10, now below content (z-index 8) */
   transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+  pointer-events: none;  /* ADDED: allows clicks to pass through */
 }
 
 .curtain-left {
@@ -236,15 +236,14 @@ button{
 .hide-opening {
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.8s 1s ease;
   visibility: hidden;
-  transition: opacity 0.8s 1s ease, visibility 0s 1.8s;
+  transition: opacity 1s ease, visibility 0s 1s;
 }
 
 .hide-opening .opening-content {
   opacity: 0;
-  transform: scale(0.9);
-  transition: 0.6s ease;
+  transform: scale(0.95);
+  transition: 0.5s ease;
 }
 
 .hide-opening .sparkles,
@@ -260,7 +259,7 @@ button{
 .sparkles {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  pointer-events: none;  /* Ensure this is set */
   z-index: 5;
   overflow: hidden;
 }
@@ -319,7 +318,7 @@ button{
   position: absolute;
   inset: 30px;
   z-index: 4;
-  pointer-events: none;
+  pointer-events: none;  /* Ensure this is set */
 }
 
 .frame-corner {
@@ -378,7 +377,7 @@ button{
 
 .opening-content {
   position: relative;
-  z-index: 8;
+  z-index: 20;  /* RAISED: highest in the stack */
   text-align: center;
   color: #ffffff;
   padding: 20px;
@@ -591,6 +590,7 @@ button{
 
 .open-btn {
   position: relative;
+  z-index: 25;  /* ADDED: ensure button is above everything */
   margin-top: 45px;
   background: linear-gradient(135deg, #c6a46a, #e8c97a);
   color: #1a0f0a;
@@ -604,11 +604,8 @@ button{
   overflow: hidden;
   border: 1px solid rgba(255, 215, 100, 0.4);
   cursor: pointer;
-
-  /* FIX: Use visibility animation to ensure button is clickable */
   opacity: 0;
   animation: btnEntrance 0.8s 2.8s ease forwards;
-
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
