@@ -1044,30 +1044,30 @@ animation:fadeUp 1s 3.2s ease forwards;
 }
 
 /* =========================================
-   GALLERY SECTION - SINGLE FEATURED PHOTO
+   GALLERY SECTION - FULL SIZE PHOTO STACK
 ========================================= */
-.gallery-section{
-  padding: 90px 7% 95px;
+.gallery-section {
+  padding: 80px 7% 90px;
   background:
     radial-gradient(circle at top left, rgba(198,164,106,0.18), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(182,122,107,0.16), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(182,122,107,0.15), transparent 32%),
     linear-gradient(180deg, #f8f1e5 0%, #f3e3cc 48%, #f7efe3 100%);
   visibility: hidden;
   opacity: 0;
 }
 
-.gallery-section.visible{
+.gallery-section.visible {
   visibility: visible;
   opacity: 1;
   transition: opacity 0.8s ease;
 }
 
-.gallery-header{
+.gallery-header {
   text-align: center;
   margin-bottom: 42px;
 }
 
-.gallery-header h2{
+.gallery-header h2 {
   font-family: 'Cinzel', serif;
   font-size: clamp(34px, 5vw, 50px);
   color: var(--brown);
@@ -1075,25 +1075,27 @@ animation:fadeUp 1s 3.2s ease forwards;
   margin-bottom: 10px;
 }
 
-.gallery-header p{
+.gallery-header p {
   color: #8a5d3b;
   font-family: 'Great Vibes', cursive;
   font-size: 28px;
   line-height: 1.4;
 }
 
-.gallery-grid{
-  max-width: 860px;
+.gallery-grid {
+  max-width: 980px;
   margin: 0 auto;
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 34px;
 }
 
-.gallery-item{
+.gallery-item {
   position: relative;
   width: 100%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,248,240,0.64));
-  border: 1px solid rgba(198,164,106,0.28);
-  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,248,240,0.66));
+  border: 1px solid rgba(198,164,106,0.30);
+  border-radius: 32px;
   padding: 18px;
   box-shadow:
     0 24px 60px rgba(59,43,36,0.10),
@@ -1104,65 +1106,60 @@ animation:fadeUp 1s 3.2s ease forwards;
   transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.35s ease;
 }
 
-.gallery-item.show{
+.gallery-item.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.gallery-item:hover{
+.gallery-item:hover {
   box-shadow:
     0 30px 74px rgba(59,43,36,0.14),
     inset 0 1px 0 rgba(255,255,255,0.78);
 }
 
-.gallery-item::before{
+.gallery-item::before {
   content: '';
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(198,164,106,0.20);
-  border-radius: 22px;
+  border: 1px solid rgba(198,164,106,0.22);
+  border-radius: 24px;
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
 
-.gallery-item img{
+.gallery-item img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 20px;
-  object-fit: cover;
-  max-height: 75vh;
+  border-radius: 22px;
+  object-fit: contain;
 }
 
-.gallery-item::after{
+.gallery-item::after {
   content: '';
   position: absolute;
   left: 18px;
   right: 18px;
   bottom: 18px;
-  height: 34%;
-  background: linear-gradient(180deg, transparent, rgba(28,18,14,0.38));
-  border-radius: 0 0 20px 20px;
+  height: 28%;
+  background: linear-gradient(180deg, transparent, rgba(28,18,14,0.42));
+  border-radius: 0 0 22px 22px;
   pointer-events: none;
   z-index: 1;
 }
 
-.gallery-caption{
+.gallery-caption {
   position: absolute;
   left: 36px;
   right: 36px;
-  bottom: 30px;
+  bottom: 32px;
   color: var(--white);
   font-family: 'Great Vibes', cursive;
-  font-size: 28px;
+  font-size: 30px;
   line-height: 1.3;
   text-align: center;
-  z-index: 2;
-  text-shadow: 0 4px 18px rgba(0,0,0,0.28);
-}
-
-.gallery-frame{
-  display: none;
+  z-index: 3;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.35);
 }
 /* =========================================
    FOOTER SECTION
@@ -1550,48 +1547,51 @@ animation:fadeUp 1s 3.2s ease forwards;
   margin-top: 22px;
   padding-top: 22px;
 }
-.gallery-section{
-  padding: 74px 5% 80px;
+.gallery-section {
+  padding: 68px 5% 76px;
 }
 
-.gallery-header{
+.gallery-header {
   margin-bottom: 30px;
 }
 
-.gallery-header h2{
+.gallery-header h2 {
   font-size: 34px;
 }
 
-.gallery-header p{
+.gallery-header p {
   font-size: 24px;
 }
 
-.gallery-item{
-  border-radius: 24px;
-  padding: 14px;
+.gallery-grid {
+  gap: 26px;
 }
 
-.gallery-item::before{
-  inset: 10px;
+.gallery-item {
+  border-radius: 24px;
+  padding: 12px;
+}
+
+.gallery-item::before {
+  inset: 8px;
   border-radius: 18px;
 }
 
-.gallery-item img{
+.gallery-item img {
   border-radius: 16px;
-  max-height: 62vh;
 }
 
-.gallery-item::after{
-  left: 14px;
-  right: 14px;
-  bottom: 14px;
+.gallery-item::after {
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
   border-radius: 0 0 16px 16px;
 }
 
-.gallery-caption{
-  left: 24px;
-  right: 24px;
-  bottom: 24px;
+.gallery-caption {
+  left: 20px;
+  right: 20px;
+  bottom: 22px;
   font-size: 24px;
 }
 .location-section {
@@ -1804,39 +1804,49 @@ animation:fadeUp 1s 3.2s ease forwards;
 .event-venue strong {
   font-size: 15px;
 }
-.gallery-section{
-  padding: 66px 5% 72px;
+.gallery-section {
+  padding: 58px 4% 66px;
 }
 
-.gallery-header h2{
+.gallery-header h2 {
   font-size: 30px;
 }
 
-.gallery-header p{
+.gallery-header p {
   font-size: 21px;
 }
 
-.gallery-item{
-  padding: 12px;
+.gallery-grid {
+  gap: 22px;
+}
+
+.gallery-item {
+  padding: 10px;
   border-radius: 20px;
 }
 
-.gallery-item::before{
-  inset: 8px;
+.gallery-item::before {
+  inset: 7px;
   border-radius: 15px;
 }
 
-.gallery-item img{
+.gallery-item img {
   border-radius: 14px;
-  max-height: 52vh;
 }
 
-.gallery-caption{
-  left: 18px;
-  right: 18px;
-  bottom: 20px;
+.gallery-item::after {
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  height: 32%;
+  border-radius: 0 0 14px 14px;
+}
+
+.gallery-caption {
+  left: 16px;
+  right: 16px;
+  bottom: 18px;
   font-size: 20px;
-  line-height: 1.25;
 }
 .location-section {
   padding: 32px 5% 64px;
@@ -2131,17 +2141,33 @@ we warmly invite you to celebrate our wedding.
 <section class="gallery-section" id="gallerySection">
   <div class="gallery-header">
     <h2>Our Moments</h2>
-    <p>A treasured memory from our journey</p>
+    <p>A few memories from our beautiful journey</p>
   </div>
 
   <div class="gallery-grid">
+
     <div class="gallery-item">
-      <img src="imagesgallery-2.JPG" alt="Padalingam and Rajarajeshwari family moment">
-      <span class="gallery-caption">A moment wrapped in love, family & blessings</span>
+      <img src="imagesgallery-1.JPG" alt="Rajarajeshwari portrait">
+      <span class="gallery-caption">Rajarajeshwari</span>
     </div>
+
+    <div class="gallery-item">
+      <img src="imagesgallery-2.JPG" alt="Padalingam portrait">
+      <span class="gallery-caption">Padalingam</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="imagesgallery-3.JPG" alt="Padalingam and Rajarajeshwari">
+      <span class="gallery-caption">Together, forever begins</span>
+    </div>
+
+    <div class="gallery-item">
+      <img src="imagesgallery-4.JPG" alt="Family celebration moment">
+      <span class="gallery-caption">Blessed by family</span>
+    </div>
+
   </div>
 </section>
-
 <!-- FOOTER SECTION -->
 <footer class="footer-section" id="footerSection">
   <div class="footer-ornament">✦ ───── ✦</div>
