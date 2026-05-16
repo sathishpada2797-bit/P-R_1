@@ -1,16 +1,4 @@
-// ADD this variable with your other var declarations at the top:
-var mapSection=document.getElementById("mapSection");
-
-// ADD this line inside the setTimeout (where other sections get "visible"):
-mapSection.classList.add("visible");
-
-// ADD ",.map-wrapper" to your revealElements querySelectorAll:
-// Change FROM:
-// var revealElements=document.querySelectorAll(".family-card,.quote-text,.save-date-card,.event-item,.gallery-item");
-// Change TO:
-var revealElements=document.querySelectorAll(".family-card,.quote-text,.save-date-card,.event-item,.gallery-item,.map-wrapper");
-
-// ADD this entire block BEFORE the closing });
+// Add to Calendar (.ics download)
 document.getElementById("addCalendarBtn").onclick=function(){
 var icsContent=[
 "BEGIN:VCALENDAR",
