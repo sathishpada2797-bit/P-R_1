@@ -629,22 +629,17 @@ updateCountdown();
 setInterval(updateCountdown,1000);
 });
 </script>
-<div class="save-date-actions">
-<button type="button" class="action-btn btn-calendar" id="addCalendarBtn">📅 Add to Calendar</button>
-<a href="https://maps.app.goo.gl/WCAVZjt6sgVD9Ecm8" target="_blank" rel="noopener" class="action-btn btn-directions">📍 Get Directions</a>
+<div class="venue-actions">
+<a href="https://maps.app.goo.gl/WCAVZjt6sgVD9Ecm8" target="_blank" rel="noopener" class="venue-card">
+<div class="venue-card-icon map-icon">📍</div>
+<span class="venue-card-title">View Map</span>
+<span class="venue-card-subtitle">Get Directions</span>
+</a>
+<button type="button" class="venue-card" id="addCalendarBtn">
+<div class="venue-card-icon cal-icon">📅</div>
+<span class="venue-card-title">Add to Calendar</span>
+<span class="venue-card-subtitle">Muhurtham · 7:35 AM</span>
+</button>
 </div>
-<!-- MAP SECTION -->
-<section class="map-section" id="mapSection">
-<div class="map-header">
-<h2>Venue Location</h2>
-<p>SOP Marriage Hall, Sivakasi</p>
-</div>
-<div class="map-wrapper">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.5!2d77.8!3d9.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMjcnMDAuMCJOIDc3wrA0OCcwMC4wIkU!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-<div class="map-footer">
-<a href="https://maps.app.goo.gl/WCAVZjt6sgVD9Ecm8" target="_blank" rel="noopener">📍 Open in Google Maps</a>
-</div>
-</section>
 </body>
 </html>
