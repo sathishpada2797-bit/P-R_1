@@ -962,7 +962,10 @@ animation:fadeUp 1s 3.2s ease forwards;
   margin-bottom: 4px;
   font-weight: 600;
 }
-
+.event-icon svg {
+  width: 32px;
+  height: 32px;
+}
 /* =========================================
    LOCATION SECTION
 ========================================= */
@@ -1597,6 +1600,10 @@ animation:fadeUp 1s 3.2s ease forwards;
 .family-grid .family-quote {
   margin-top: 10px;
 }
+.event-icon svg {
+  width: 28px;
+  height: 28px;
+}
 }
 @media(max-width:480px){
 .hero-content {
@@ -1842,6 +1849,10 @@ animation:fadeUp 1s 3.2s ease forwards;
   font-size: 22px;
   line-height: 1.45;
 }
+.event-icon svg {
+  width: 25px;
+  height: 25px;
+}
 }
 </style>
 </head>
@@ -2041,8 +2052,16 @@ we warmly invite you to celebrate our wedding.
 
     <div class="event-item">
       <div class="event-card">
-        <div class="event-icon">01</div>
-
+        <div class="event-icon" aria-hidden="true">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+             <path d="M4 20h16"></path>
+             <path d="M7 20v-6"></path>
+             <path d="M17 20v-6"></path>
+             <path d="M7 14h10"></path>
+             <path d="M9 14c0-3 1.5-5 3-7 1.5 2 3 4 3 7"></path>
+             <path d="M12 7V4"></path>
+           </svg>
+         </div>
         <h3>Reception</h3>
 
         <div class="event-meta">
@@ -2059,13 +2078,21 @@ we warmly invite you to celebrate our wedding.
 
     <div class="event-item">
       <div class="event-card">
-        <div class="event-icon">02</div>
+        <div class="event-icon" aria-hidden="true">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+             <path d="M12 3c2.5 3 4 5.3 4 8a4 4 0 0 1-8 0c0-2.7 1.5-5 4-8Z"></path>
+             <path d="M9 14c-1.8 1.2-3 2.8-3 4.5"></path>
+             <path d="M15 14c1.8 1.2 3 2.8 3 4.5"></path>
+             <path d="M5 21h14"></path>
+             <path d="M9 18h6"></path>
+           </svg>
+         </div>
 
         <h3>Muhurtham</h3>
 
         <div class="event-meta">
           <div class="event-date">07 June 2026</div>
-          <div class="event-time">7:35 AM</div>
+          <div class="event-time">7:35 AM onwards</div>
         </div>
 
         <div class="event-venue">
