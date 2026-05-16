@@ -1247,82 +1247,7 @@ animation:fadeUp 1s 3.2s ease forwards;
   font-size: 13px;
   letter-spacing: 2px;
 }
-/* =========================================
-   MOBILE SCROLL INTERACTION
-========================================= */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: linear-gradient(90deg, #8a5d3b, #c6a46a, #f1dfc3);
-  z-index: 10000;
-  opacity: 0;
-  transition: width 0.1s linear, opacity 0.3s ease;
-}
 
-.scroll-progress.active {
-  opacity: 1;
-}
-
-.scroll-next-btn {
-  position: fixed;
-  right: 18px;
-  bottom: 22px;
-  z-index: 10000;
-  width: 52px;
-  height: 52px;
-  border: 1px solid rgba(198,164,106,0.45);
-  background: rgba(255,250,241,0.94);
-  color: #5e3f32;
-  border-radius: 50%;
-  box-shadow: 0 12px 32px rgba(59,43,36,0.18);
-  backdrop-filter: blur(10px);
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(20px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.scroll-next-btn.show {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.scroll-next-btn span {
-  display: none;
-}
-
-.scroll-next-btn svg {
-  width: 22px;
-  height: 22px;
-  animation: scrollArrowBounce 1.4s ease-in-out infinite;
-}
-
-@keyframes scrollArrowBounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(5px);
-  }
-}
-
-/* Hide scroll button only on large desktop */
-@media(min-width:992px) {
-  .scroll-next-btn,
-  .scroll-progress {
-    display: none;
-  }
-}
 /* =========================================
    RESPONSIVE
 ========================================= */
@@ -2251,15 +2176,7 @@ we warmly invite you to celebrate our wedding.
     Padalingam & Rajarajeshwari · 07 June 2026
   </p>
 </footer>
-<!-- MOBILE SCROLL INTERACTION -->
-<div class="scroll-progress" id="scrollProgress"></div>
 
-<button class="scroll-next-btn" id="scrollNextBtn" type="button" aria-label="Scroll to next section">
-  <span>Scroll</span>
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="m6 9 6 6 6-6"></path>
-  </svg>
-</button>
 <script>
 document.addEventListener("DOMContentLoaded",function(){
 var openingScreen=document.getElementById("openingScreen");
@@ -2271,8 +2188,6 @@ var eventsSection=document.getElementById("eventsSection");
 var gallerySection=document.getElementById("gallerySection");
 var locationSection=document.getElementById("locationSection");
 var footerSection=document.getElementById("footerSection");
-var scrollProgress=document.getElementById("scrollProgress");
-var scrollNextBtn=document.getElementById("scrollNextBtn");
 openBtn.onclick=function(){
 openingScreen.classList.add("hide-opening");
 setTimeout(function(){
@@ -2284,9 +2199,6 @@ eventsSection.classList.add("visible");
 gallerySection.classList.add("visible");
 locationSection.classList.add("visible");
 footerSection.classList.add("visible");
-   
-if(scrollProgress){scrollProgress.classList.add("active");}
-if(scrollNextBtn){scrollNextBtn.classList.add("show");}
 },1200);
 };
 // Parallax
@@ -2334,50 +2246,6 @@ secondsEl.innerHTML=pad(Math.floor((dist%(1000*60))/1000));
 }
 updateCountdown();
 setInterval(updateCountdown,1000);
-
-// Mobile scroll progress
-window.addEventListener("scroll",function(){
-  var scrollTop=window.scrollY;
-  var docHeight=document.documentElement.scrollHeight-window.innerHeight;
-  var progress=docHeight>0?(scrollTop/docHeight)*100:0;
-
-  if(scrollProgress){
-    scrollProgress.style.width=progress+"%";
-  }
-
-  if(scrollNextBtn){
-    var nearBottom=window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-120;
-    if(nearBottom){
-      scrollNextBtn.classList.remove("show");
-    }else if(document.body.style.overflow==="auto"){
-      scrollNextBtn.classList.add("show");
-    }
-  }
-});
-
-// Scroll section by section
-if(scrollNextBtn){
-  scrollNextBtn.addEventListener("click",function(){
-    var sections=[
-      heroSection,
-      familySection,
-      saveDateSection,
-      eventsSection,
-      locationSection,
-      gallerySection,
-      footerSection
-    ];
-
-    var currentY=window.scrollY;
-
-    for(var i=0;i<sections.length;i++){
-      if(sections[i] && sections[i].offsetTop>currentY+80){
-        sections[i].scrollIntoView({behavior:"smooth"});
-        break;
-      }
-    }
-  });
-}
 });
 </script>
 </body>
