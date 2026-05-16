@@ -412,7 +412,12 @@ animation:fadeUp 1s 3.2s ease forwards;
   max-width: 1040px;
   margin: 0 auto;
 }
-
+.family-grid .family-quote {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 18px;
+  margin-bottom: 0;
+}
 .family-card {
   position: relative;
   background:
@@ -1589,6 +1594,9 @@ animation:fadeUp 1s 3.2s ease forwards;
 .location-section {
   padding: 36px 5% 72px;
 }
+.family-grid .family-quote {
+  margin-top: 10px;
+}
 }
 @media(max-width:480px){
 .hero-content {
@@ -1826,6 +1834,14 @@ animation:fadeUp 1s 3.2s ease forwards;
 .location-section {
   padding: 32px 5% 64px;
 }
+.family-grid .family-quote {
+  margin-top: 6px;
+}
+
+.quote-text {
+  font-size: 22px;
+  line-height: 1.45;
+}
 }
 </style>
 </head>
@@ -1944,18 +1960,21 @@ we warmly invite you to celebrate our wedding.
         <span class="member-name">Mrs.M.Thiyagalakshmi</span>
       </div>
     </div>
-  <div class="family-quote">
-    <div class="quote-ornament">✦</div>
-<p class="quote-text">
-  Mapla Engineer — builds with logic,<br>
-  Ponnu Physiotherapist — heals with care.<br>
-  Together, they discovered the perfect answer: Love.
-</p>
-    <div class="quote-ornament">✦</div>
-  </div>
+
+    <div class="family-quote">
+      <div class="quote-ornament">✦</div>
+
+      <p class="quote-text">
+        Mapla Engineer — builds with logic,<br>
+        Ponnu Physiotherapist — heals with care.<br>
+        Together, they discovered the perfect answer: Love.
+      </p>
+
+      <div class="quote-ornament">✦</div>
+    </div>
+
   </div>
 </section>
-
 <!-- SAVE THE DATE SECTION -->
 <section class="save-date-section" id="saveDateSection">
   <div class="save-date-card">
