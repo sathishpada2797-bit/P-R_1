@@ -359,37 +359,186 @@ animation:fadeUp 1s 3.2s ease forwards;
 }
 
 /* =========================================
-   FAMILY SECTION
+   FAMILY SECTION - LUXURY STYLE
 ========================================= */
-.family-section{padding:100px 7%;background:var(--ivory);visibility:hidden;opacity:0;}
-.family-section.visible{visibility:visible;opacity:1;transition:opacity 0.8s ease;}
-.family-quote{text-align:center;margin-bottom:70px;}
-.quote-ornament{color:var(--gold);font-size:18px;letter-spacing:8px;margin:15px 0;}
-.quote-text{
-font-family:'Great Vibes',cursive;font-size:36px;color:var(--brown);
-line-height:1.6;max-width:700px;margin:0 auto;
-opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;
+.family-section {
+  padding: 90px 7% 70px;
+  background:
+    radial-gradient(circle at top left, rgba(198,164,106,0.14), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(182,122,107,0.10), transparent 34%),
+    var(--ivory);
+  visibility: hidden;
+  opacity: 0;
 }
-.quote-text.show{opacity:1;transform:translateY(0);}
-.family-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;max-width:1000px;margin:0 auto;}
-.family-card{
-background:rgba(255,255,255,0.6);backdrop-filter:blur(10px);
-padding:50px 40px;border-radius:30px;border:1px solid rgba(198,164,106,0.2);
-box-shadow:0 10px 30px rgba(0,0,0,0.05);text-align:center;
-opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;
-}
-.family-card.show{opacity:1;transform:translateY(0);}
-.family-icon{font-size:48px;margin-bottom:20px;}
-.family-card h3{font-family:'Cinzel',serif;font-size:28px;font-weight:600;color:var(--brown);margin-bottom:10px;}
-.family-divider{width:60px;height:2px;background:var(--gold);margin:20px auto;}
-.family-member{margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;}
-.member-role{font-size:14px;color:var(--rose);font-weight:500;min-width:30px;}
-.member-name{font-size:18px;font-weight:500;color:var(--brown);}
 
+.family-section.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.family-quote {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.quote-ornament {
+  color: var(--gold);
+  font-size: 17px;
+  letter-spacing: 8px;
+  margin: 12px 0;
+}
+
+.quote-text {
+  font-family: 'Great Vibes', cursive;
+  font-size: 38px;
+  color: #5e3f32;
+  line-height: 1.45;
+  max-width: 780px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.quote-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.family-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 34px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.family-card {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,250,241,0.62));
+  backdrop-filter: blur(12px);
+  padding: 48px 38px 44px;
+  border-radius: 34px;
+  border: 1px solid rgba(198,164,106,0.28);
+  box-shadow:
+    0 22px 60px rgba(59,43,36,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.75);
+  text-align: center;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
+}
+
+.family-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.family-card:hover {
+  box-shadow:
+    0 28px 75px rgba(59,43,36,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.family-card::before {
+  content: '';
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(198,164,106,0.20);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.family-card::after {
+  content: '';
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  right: -58px;
+  top: -58px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198,164,106,0.18), transparent 68%);
+  pointer-events: none;
+}
+
+.family-icon {
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, rgba(198,164,106,0.24), rgba(255,255,255,0.68));
+  border: 1px solid rgba(198,164,106,0.36);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8a5d3b;
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  font-weight: 600;
+  box-shadow: 0 12px 30px rgba(198,164,106,0.16);
+  position: relative;
+  z-index: 2;
+}
+
+.family-icon::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(138,93,59,0.18);
+  border-radius: 50%;
+}
+
+.family-card h3 {
+  position: relative;
+  z-index: 2;
+  font-family: 'Cinzel', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--brown);
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.family-divider {
+  position: relative;
+  z-index: 2;
+  width: 72px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 20px auto 24px;
+}
+
+.family-member {
+  position: relative;
+  z-index: 2;
+  margin-top: 15px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+}
+
+.member-role {
+  font-size: 13px;
+  color: var(--rose);
+  font-weight: 600;
+  min-width: 32px;
+}
+
+.member-name {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--brown);
+  line-height: 1.45;
+}
 /* =========================================
    SAVE THE DATE SECTION
 ========================================= */
-.save-date-section{padding:120px 7%;background:linear-gradient(180deg,#f7efe3,#f1dfc3);visibility:hidden;opacity:0;}
+.save-date-section{padding:80px 7% 110px;background:linear-gradient(180deg,#f7efe3,#f1dfc3);visibility:hidden;opacity:0;}
 .save-date-section.visible{visibility:visible;opacity:1;transition:opacity 0.8s ease;}
 .save-date-card{
 max-width:1100px;margin:auto;
@@ -825,11 +974,46 @@ z-index:1;
 .hero-title span{font-size:32px;}
 .hero-subtitle{font-size:18px;}
 .hero-bottom-text{font-size:15px;}
-.family-section{padding:80px 5%;}
-.quote-text{font-size:26px;}
-.family-card{padding:40px 30px;}
-.family-card h3{font-size:24px;}
-.member-name{font-size:16px;}
+.family-section {
+  padding: 72px 5% 54px;
+}
+
+.family-quote {
+  margin-bottom: 42px;
+}
+
+.quote-text {
+  font-size: 28px;
+}
+
+.family-grid {
+  gap: 24px;
+}
+
+.family-card {
+  padding: 42px 28px 38px;
+  border-radius: 28px;
+}
+
+.family-card::before {
+  inset: 12px;
+  border-radius: 20px;
+}
+
+.family-icon {
+  width: 64px;
+  height: 64px;
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+
+.family-card h3 {
+  font-size: 23px;
+}
+
+.member-name {
+  font-size: 16px;
+}
 .save-date-section{padding:80px 5%;}
 .save-date-card{padding:50px 30px;}
 .save-date-card h2{font-size:42px;}
@@ -911,10 +1095,32 @@ z-index:1;
 .hero-title{font-size:36px;}
 .hero-title span{font-size:26px;}
 .hero-top-text{letter-spacing:3px;font-size:10px;}
-.quote-text{font-size:22px;}
-.family-card{padding:35px 20px;}
-.family-card h3{font-size:20px;}
-.member-name{font-size:15px;}
+.quote-text {
+  font-size: 24px;
+}
+
+.family-card {
+  padding: 38px 20px 34px;
+}
+
+.family-card h3 {
+  font-size: 20px;
+}
+
+.family-member {
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 14px;
+}
+
+.member-role {
+  min-width: auto;
+  font-size: 12px;
+}
+
+.member-name {
+  font-size: 15px;
+}
 .save-date-card h2{font-size:34px;}
 .count-box h3{font-size:32px;}
 .countdown{grid-template-columns:1fr 1fr;gap:15px;}
@@ -1003,41 +1209,56 @@ we warmly invite you to celebrate our wedding.
 
 <!-- FAMILY SECTION -->
 <section class="family-section" id="familySection">
-<div class="family-quote">
-<div class="quote-ornament">✦</div>
-<p class="quote-text">Your custom quote will go here</p>
-<div class="quote-ornament">✦</div>
-</div>
-<div class="family-grid">
-<div class="family-card groom-family">
-<div class="family-icon">🤵</div>
-<h3>Groom's Family</h3>
-<div class="family-divider"></div>
-<div class="family-member">
-<span class="member-role">S/o</span>
-<span class="member-name">Mr. Padalingam S</span>
-</div>
-<div class="family-member">
-<span class="member-role">&amp;</span>
-<span class="member-name">Mrs. Shanmugathai P</span>
-</div>
-</div>
-<div class="family-card bride-family">
-<div class="family-icon">👰</div>
-<h3>Bride's Family</h3>
-<div class="family-divider"></div>
-<div class="family-member">
-<span class="member-role">D/o</span>
-<span class="member-name">Mr. Muniyandi G</span>
-</div>
-<div class="family-member">
-<span class="member-role">&amp;</span>
-<span class="member-name">Mrs. Thiyagalakshmi M</span>
-</div>
-</div>
-</div>
-</section>
 
+  <div class="family-quote">
+    <div class="quote-ornament">✦</div>
+    <p class="quote-text">
+      With the blessings of our beloved families,<br>
+      we begin this beautiful journey together.
+    </p>
+    <div class="quote-ornament">✦</div>
+  </div>
+
+  <div class="family-grid">
+
+    <div class="family-card groom-family">
+      <div class="family-icon">P</div>
+
+      <h3>Padalingam's Family</h3>
+
+      <div class="family-divider"></div>
+
+      <div class="family-member">
+        <span class="member-role">S/o</span>
+        <span class="member-name">Mr.S.Padalingam</span>
+      </div>
+
+      <div class="family-member">
+        <span class="member-role">&amp;</span>
+        <span class="member-name">Mrs.P.Shanmugathai</span>
+      </div>
+    </div>
+
+    <div class="family-card bride-family">
+      <div class="family-icon">R</div>
+
+      <h3>Rajarajeshwari's Family</h3>
+
+      <div class="family-divider"></div>
+
+      <div class="family-member">
+        <span class="member-role">D/o</span>
+        <span class="member-name">Mr.G.Muniyandi</span>
+      </div>
+
+      <div class="family-member">
+        <span class="member-role">&amp;</span>
+        <span class="member-name">Mrs.M.Thiyagalakshmi</span>
+      </div>
+    </div>
+
+  </div>
+</section>
 <!-- SAVE THE DATE SECTION -->
 <section class="save-date-section" id="saveDateSection">
 <div class="save-date-card">
